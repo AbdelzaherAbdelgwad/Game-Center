@@ -1,0 +1,194 @@
+:root {
+  /* colors */
+  --primary-100: #e2e0ff;
+  --primary-200: #c1beff;
+  --primary-300: #a29dff;
+  --primary-400: #837dff;
+  --primary-500: #645cff;
+  --primary-600: #504acc;
+  --primary-700: #3c3799;
+  --primary-800: #282566;
+  --primary-900: #141233;
+
+  /* grey */
+  --grey-50: #f8fafc;
+  --grey-100: #f1f5f9;
+  --grey-200: #e2e8f0;
+  --grey-300: #cbd5e1;
+  --grey-400: #94a3b8;
+  --grey-500: #64748b;
+  --grey-600: #475569;
+  --grey-700: #334155;
+  --grey-800: #1e293b;
+  --grey-900: #0f172a;
+  /* rest of the colors */
+  --black: #222;
+  --white: #fff;
+  --red-light: #f8d7da;
+  --red-dark: #842029;
+  --green-light: #d1e7dd;
+  --green-dark: #0f5132;
+
+  /* fonts  */
+
+  --small-text: 0.875rem;
+  --extra-small-text: 0.7em;
+  /* rest of the vars */
+  --backgroundColor: var(--grey-50);
+  --textColor: var(--grey-900);
+  --borderRadius: 0.25rem;
+  --letterSpacing: 1px;
+  --transition: 0.3s ease-in-out all;
+  --max-width: 1120px;
+  --fixed-width: 600px;
+
+  /* box shadow*/
+  --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+/* wordle */
+
+.WordleSquare {
+  border: 3px solid black;
+  background-color: #ffaeae  ;
+  height: 75px;
+  width: 75px;
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+}
+.wordleBoard{
+  display: grid;
+  grid-template-rows: repeat(5,78px);
+  grid-template-columns: repeat(5,78px);
+  justify-content: center;
+}
+/* end of wordle */
+/* tictactoe */
+.Square {
+  border: 3px solid black;
+  background-color: #ffaeae  ;
+  height: 75px;
+  width: 75px;
+}
+.Board{
+  display: grid;
+  grid-template-rows: repeat(3,78px);
+  grid-template-columns: repeat(3,78px);
+  justify-content: center;
+}
+/* end of tictactoe */
+/* battleShips */
+.BattleShipContainer{
+  display: flex;
+  justify-content: center;
+}
+.BattleShipSquare {
+  border: 3px solid black;
+  background-color: #ffaeae  ;
+  height: 50px;
+  width: 50px;
+}
+.BattleShipBoard{
+  display: grid;
+  grid-template-rows: repeat(10,53px);
+  grid-template-columns: repeat(10,53px);
+  justify-content: center;
+  margin: 50px;
+}
+.BattleShipSquare:hover{
+  box-shadow: 10px 5px 5px rgb(169, 169, 169);
+  border-radius: 25%;
+  cursor: pointer;
+}
+/* end of battleShips */
+.newGame{
+  width: 125px;
+  height: 50px;
+  margin-top: 25px;
+  font-size: large;
+  font-weight: bold;
+}
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #000;
+}
+.btn {
+  cursor: pointer;
+  color: black;
+  background: white;
+  border: 1px solid #767676;
+  border-radius: var(--borderRadius);
+  letter-spacing: var(--letterSpacing);
+  padding: 13px;
+  box-shadow: var(--shadow-1);
+  transition: var(--transition);
+  text-transform: capitalize;
+  display: inline-block;
+  margin-top: 1%;
+  margin: 10px;
+}
+.btn:hover {
+  background: rgba(70, 70, 70, 0.414);
+  box-shadow: var(--shadow-3);
+}
+.mainInput{
+  height: 30px;
+  width: 10%;
+  margin: 10px;
+}
+
+.HomePageDiv{
+  border: 1px black solid;
+  width: 75%;
+  text-align: center;
+  margin: auto;
+  padding: 30px;
+  border-radius: 20px;
+  margin-top: 50px;
+}
+.HomePageTitle{
+    border: 1px #535353 solid;
+    border-radius: 510px;
+    padding: 10px;
+    text-align: center;
+    margin: auto;
+    background-color: #d4d4d4;
+}
