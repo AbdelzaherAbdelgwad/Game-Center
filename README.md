@@ -1,5 +1,5 @@
 # Game Center
-a game center website that has multiple games that you can play in your free time
+Welcome to the Game Center! This website features a variety of games for you to enjoy in your free time.
 
 ## Getting Started with the back end
 - Navigate through ame-center BackEnd directory
