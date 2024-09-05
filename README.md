@@ -3,7 +3,7 @@ Welcome to the Game Center! This website features a variety of games for you to 
 
 ## Getting Started with the back end
 - Navigate through Game-center BackEnd directory
-- Start the server using your preferred code editor (we recommend IntelliJ).
+- Start the server using your preferred code editor (IntelliJ is recommended).
 
 ## Getting Started with the front end
 - Navigate throgh Game-center FrontEnd directory
