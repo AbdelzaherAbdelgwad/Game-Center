@@ -5,6 +5,7 @@ import Main from './components/main';
 import ScoreBoard from './components/ticTacToe/scoreBoard';
 import WordleBoard from './components/wordle/wordleBoard';
 import BattleShipsBoard from './components/battleShips/battleShipsBoard';
+import SlidingPuzzleBoard from './components/slidingPuzzle/slidingPuzzleBoard';
 function App() {
   return (
     <div className="App">
@@ -15,6 +16,7 @@ function App() {
           <Route path='/test' element={<ScoreBoard />}/>
           <Route path='/wordle' element={<WordleBoard />}/>
           <Route path='/battleShips' element={<BattleShipsBoard/>} />
+          <Route path='/slidingPuzzle' element={<SlidingPuzzleBoard />}/>
           
       </Routes>
     </BrowserRouter>

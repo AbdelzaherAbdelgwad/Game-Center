@@ -81,7 +81,8 @@ export default function Main(props) {
         <h2>Choose your game:</h2>
         <Link className='btn' onClick={handleClickLogIn}>Tic-Tac-Toe</Link> 
         <Link to='/wordle' className='btn'>Wordle</Link>
-        <Link to='/battleShips' className="btn">BattleShips</Link>
+        <Link to='/battleShips' className="btn">Battle Ships</Link>
+        <Link to='/slidingPuzzle' className="btn">Sliding Puzzle</Link>
 
         {!clicked? 
           null: 
