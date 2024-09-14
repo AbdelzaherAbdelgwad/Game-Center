@@ -64,7 +64,7 @@ export default function SlidingPuzzleBoard() {
         return true;
     }
     function calculateWinner(arr){
-        let x = Array.from({ length: 3 }, (_, index) => index + 1);
+        let x = Array.from({ length: 15 }, (_, index) => index + 1);
         if(arraysEqual(x,arr)){
             return true
         }

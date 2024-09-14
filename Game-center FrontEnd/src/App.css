@@ -113,6 +113,26 @@
   grid-template-columns: repeat(3,78px);
   justify-content: center;
 }
+table, th, td {
+  border: 1px solid;
+  border-radius: 10px;
+}
+th{
+  
+  height: 40px;
+  font-size: larger;
+  background-color: gray;
+}
+td{
+  font-size: large;
+  font-weight: bolder;
+  height: 30px;
+}
+
+table {
+  width: 100%;
+  margin-top: 25px;
+}
 /* end of tictactoe */
 
 /* battleShips */
@@ -137,6 +157,15 @@
   box-shadow: 10px 5px 5px rgb(169, 169, 169);
   border-radius: 25%;
   cursor: pointer;
+}
+.BattleShipsMainDiv{
+  border: 1px black solid;
+  width: 75%;
+  text-align: center;
+  margin: auto;
+  padding: 30px;
+  border-radius: 20px;
+  margin-top: 50px;
 }
 /* end of battleShips */
 
@@ -189,12 +218,17 @@ a {
   box-shadow: var(--shadow-3);
 }
 .mainInput{
-  height: 30px;
-  width: 10%;
-  margin: 10px;
+  height: 40px;
+  width: 20%;
+  margin: auto;
+  margin-bottom: 10px;
+  display: flex;
+  border: #686868 2px solid;
+  border-radius: 5px;
 }
 
 .HomePageDiv{
+  box-shadow: blue 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0px -3px, rgb(31, 193, 27) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px, rgb(255, 217, 19) 20px -20px, rgb(255, 255, 255) 30px -30px 0px -3px, rgb(255, 156, 85) 30px -30px, rgb(255, 255, 255) 40px -40px 0px -3px, rgb(255, 85, 85) 40px -40px;
   border: 1px black solid;
   width: 75%;
   text-align: center;

@@ -87,7 +87,7 @@ export default function Main(props) {
         {!clicked? 
           null: 
           <div>
-            <h2>Add players names</h2>
+            <h2>-- ADD PLAYERS NAMES --</h2>
             <input className="mainInput" placeholder="Player 1 name" onChange={handleChange1}/> 
             <input className="mainInput" placeholder="Player 2 name" onChange={handleChange2}/>
             <br/>

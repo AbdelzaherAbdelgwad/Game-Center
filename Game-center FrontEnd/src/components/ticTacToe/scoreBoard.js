@@ -37,17 +37,22 @@ export default function ScoreBoard() {
 
   return (
     <div className='HomePageDiv'>
-        <h1 className='HomePageTitle'>Scoreboard</h1>
+        <h1 className='HomePageTitle'>Scoreboard</h1>         
         {allPlayers[0] 
-        && 
-        allPlayers.map((player,index)=>
-        {return <ul key={index}>
-                  <li>
-                    <h3>{player.playerName}: ({player.wins}) wins |||| ({player.losses}) losses <button onClick={()=>handleDelete(player)}>Delete</button></h3>
-                    
-                  </li>
-                </ul>})}
-
+            && 
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>No.of wins</th>
+            <th>No.of losses</th>
+          </tr>
+          {allPlayers.map((player,index)=>{
+          return  <tr>
+                      <td>{player.playerName}</td>
+                      <td>{player.wins}</td>
+                      <td>{player.losses}</td>
+                  </tr>})}
+        </table>}       
         <Link to='/' className="btn">Home Page</Link> 
         {allPlayers[0] && <Link onClick={handleDeleteAll} className="btn">Reset</Link>}
         <br/>

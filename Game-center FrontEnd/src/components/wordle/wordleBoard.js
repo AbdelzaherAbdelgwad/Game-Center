@@ -180,7 +180,6 @@ export default function WordleBoard() {
                                 />
                 })}  
         </div>}
-        {solution}
         {((squareValue.length === 25) && checkCorrectWord(word,24)) && <h3>You lost, the word was: {solution}</h3>}
         <Link reloadDocument to='/wordle' className="btn">New Game</Link>
         <Link to='/' className="btn">Home Page</Link>
