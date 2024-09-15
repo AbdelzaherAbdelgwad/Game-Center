@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Game-Center/static/css/main.5f8e39f8.css",
+    "main.js": "/Game-Center/static/js/main.9629ab6e.js",
+    "static/js/453.e036e8b5.chunk.js": "/Game-Center/static/js/453.e036e8b5.chunk.js",
+    "index.html": "/Game-Center/index.html",
+    "main.5f8e39f8.css.map": "/Game-Center/static/css/main.5f8e39f8.css.map",
+    "main.9629ab6e.js.map": "/Game-Center/static/js/main.9629ab6e.js.map",
+    "453.e036e8b5.chunk.js.map": "/Game-Center/static/js/453.e036e8b5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5f8e39f8.css",
+    "static/js/main.9629ab6e.js"
+  ]
+}
