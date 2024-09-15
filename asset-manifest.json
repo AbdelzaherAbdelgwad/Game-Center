@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Game-Center/static/css/main.5f8e39f8.css",
-    "main.js": "/Game-Center/static/js/main.9629ab6e.js",
-    "static/js/453.e036e8b5.chunk.js": "/Game-Center/static/js/453.e036e8b5.chunk.js",
-    "index.html": "/Game-Center/index.html",
-    "main.5f8e39f8.css.map": "/Game-Center/static/css/main.5f8e39f8.css.map",
-    "main.9629ab6e.js.map": "/Game-Center/static/js/main.9629ab6e.js.map",
-    "453.e036e8b5.chunk.js.map": "/Game-Center/static/js/453.e036e8b5.chunk.js.map"
+    "main.css": "/Game-Center/Game-center%20FrontEnd/static/css/main.5f8e39f8.css",
+    "main.js": "/Game-Center/Game-center%20FrontEnd/static/js/main.e9e05b76.js",
+    "static/js/453.e036e8b5.chunk.js": "/Game-Center/Game-center%20FrontEnd/static/js/453.e036e8b5.chunk.js",
+    "index.html": "/Game-Center/Game-center%20FrontEnd/index.html",
+    "main.5f8e39f8.css.map": "/Game-Center/Game-center%20FrontEnd/static/css/main.5f8e39f8.css.map",
+    "main.e9e05b76.js.map": "/Game-Center/Game-center%20FrontEnd/static/js/main.e9e05b76.js.map",
+    "453.e036e8b5.chunk.js.map": "/Game-Center/Game-center%20FrontEnd/static/js/453.e036e8b5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5f8e39f8.css",
-    "static/js/main.9629ab6e.js"
+    "static/js/main.e9e05b76.js"
   ]
 }
