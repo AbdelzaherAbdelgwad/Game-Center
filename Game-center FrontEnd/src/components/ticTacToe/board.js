@@ -145,7 +145,7 @@ return (
   <Link className="btn" onClick={clearBoard}>New Game</Link>
   <br/>
   <Link to='/' className="btn">Home Page</Link>
-  <Link to='/test' className="btn">Scoreboard</Link>
+  <Link to='/scoreBoard' className="btn">Scoreboard</Link>
 
   {calculateWinner(boardSquares)? <Confetti/>:null}
   {calculateWinner(boardSquares)? <h1>winner is : {calculateWinner(boardSquares)==="X"? player1+" (X)":player2+" (O)"}</h1>:null}

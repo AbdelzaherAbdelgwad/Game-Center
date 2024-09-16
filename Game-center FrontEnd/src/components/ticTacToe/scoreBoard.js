@@ -40,18 +40,23 @@ export default function ScoreBoard() {
         <h1 className='HomePageTitle'>Scoreboard</h1>         
         {allPlayers[0] 
             && 
-        <table>
-          <tr>
-            <th>Name</th>
-            <th>No.of wins</th>
-            <th>No.of losses</th>
-          </tr>
-          {allPlayers.map((player,index)=>{
-          return  <tr>
-                      <td>{player.playerName}</td>
-                      <td>{player.wins}</td>
-                      <td>{player.losses}</td>
-                  </tr>})}
+        <table> 
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Victory</th>
+              <th>Defeat</th>
+            </tr>
+          </thead>
+          <tbody>
+            {allPlayers.map((player,index)=>{
+            return  <tr key={index}>
+                        <td>{player.playerName}</td>
+                        <td>{player.wins}</td>
+                        <td>{player.losses}</td>
+                    </tr>})}
+          </tbody>
+          
         </table>}       
         <Link to='/' className="btn">Home Page</Link> 
         {allPlayers[0] && <Link onClick={handleDeleteAll} className="btn">Reset</Link>}

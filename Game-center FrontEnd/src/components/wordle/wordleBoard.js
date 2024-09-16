@@ -15,7 +15,6 @@ export default function WordleBoard() {
     const[allWords,setAllWords] = useState([])
     const[loading, setLoading] = useState(true)
 
-
     //FOCUS ON INPUT
     const inputRef = useRef([]);
     const focusElement = (index) => {

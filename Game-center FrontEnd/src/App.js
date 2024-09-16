@@ -6,6 +6,7 @@ import ScoreBoard from './components/ticTacToe/scoreBoard';
 import WordleBoard from './components/wordle/wordleBoard';
 import BattleShipsBoard from './components/battleShips/battleShipsBoard';
 import SlidingPuzzleBoard from './components/slidingPuzzle/slidingPuzzleBoard';
+import HeadHunter from './components/headHunter/headHunter';
 function App() {
   return (
     <div className="App">
@@ -13,10 +14,11 @@ function App() {
       <Routes>
           <Route path='/' element={<Main />}/>
           <Route path='/board' element={<Board />}/>
-          <Route path='/test' element={<ScoreBoard />}/>
+          <Route path='/scoreBoard' element={<ScoreBoard />}/>
           <Route path='/wordle' element={<WordleBoard />}/>
           <Route path='/battleShips' element={<BattleShipsBoard/>} />
           <Route path='/slidingPuzzle' element={<SlidingPuzzleBoard />}/>
+          <Route path='/headHunter' element={<HeadHunter />}/>
           
       </Routes>
     </BrowserRouter>

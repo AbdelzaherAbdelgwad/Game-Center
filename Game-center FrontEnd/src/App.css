@@ -132,6 +132,7 @@ td{
 table {
   width: 100%;
   margin-top: 25px;
+  margin-bottom:250px;
 }
 /* end of tictactoe */
 
@@ -186,6 +187,24 @@ table {
   cursor: pointer;
 }
 /* end of sliding puzzle */
+/* Head Hunter  */
+
+.headHunterContainer{
+  cursor: crosshair;
+  margin: 10px 50px;
+  border: 1px black solid;
+  height: 70vh;
+  padding: 20px;
+  border-radius: 5px;
+ 
+}
+.headHunterNav{
+  display: grid;
+  grid-template-columns: repeat(3,auto);
+  justify-content: space-between;
+  margin: auto 50px;
+}
+/* end of head hunter */
 .newGame{
   width: 125px;
   height: 50px;
@@ -219,12 +238,17 @@ a {
 }
 .mainInput{
   height: 40px;
-  width: 20%;
+  width: 40vh;
   margin: auto;
   margin-bottom: 10px;
   display: flex;
   border: #686868 2px solid;
   border-radius: 5px;
+}
+.mainButtons{
+  display: grid;
+  grid-template-columns: repeat(3,auto);
+  margin-top: 25px;
 }
 
 .HomePageDiv{

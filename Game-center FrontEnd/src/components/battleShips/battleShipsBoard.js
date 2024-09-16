@@ -32,7 +32,6 @@ export default function BattleShipsBoard() {
     const locationTwo= PlaceShips(ships, setPlayerTwoStyles, colors)
     setFirstPlayerShipsLocation(locationOne);
     setSecondPlayerShipsLocation(locationTwo);
-    console.log(locationOne)
   },[])
    
   function handlePlayerOneClick(e,index){

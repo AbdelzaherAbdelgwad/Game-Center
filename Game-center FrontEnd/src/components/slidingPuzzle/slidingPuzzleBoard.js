@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Square from './square'
 import { Link } from "react-router-dom";
 import Confetti from 'react-confetti';
+import isSolvable from './isSolvable';
 
 
 export default function SlidingPuzzleBoard() {
@@ -17,7 +18,12 @@ export default function SlidingPuzzleBoard() {
             // Swap elements
             [array[i], array[j]] = [array[j], array[i]];
         }
-        return array;
+        if(isSolvable(array)){
+            return array;
+        }else{
+            return shuffleArray(array)
+        }
+        
     }
     useEffect(()=>{
         let y = true
@@ -31,7 +37,7 @@ export default function SlidingPuzzleBoard() {
            return value;
         } ));
         setBoardValues(prev=>shuffleArray(prev))
-
+        
     },[randomValue])
 
     // (Math.min(index,getIndex)+1) %4 === 0

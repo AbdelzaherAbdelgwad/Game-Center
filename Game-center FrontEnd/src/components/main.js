@@ -11,7 +11,7 @@ export default function Main(props) {
   useEffect(()=>{
     axios.get("http://localhost:9191/Scores/getAllPlayers")
     .then((res)=>{
-      setPlayersNames(res.data.map(player=>player.playerName));console.log(res.data)
+      setPlayersNames(res.data.map(player=>player.playerName));
     })
   },[])
 
@@ -78,11 +78,16 @@ export default function Main(props) {
   return (
     <div className="HomePageDiv">
         <h1 className="HomePageTitle">Game Center</h1>
-        <h2>Choose your game:</h2>
-        <Link className='btn' onClick={handleClickLogIn}>Tic-Tac-Toe</Link> 
-        <Link to='/wordle' className='btn'>Wordle</Link>
-        <Link to='/battleShips' className="btn">Battle Ships</Link>
-        <Link to='/slidingPuzzle' className="btn">Sliding Puzzle</Link>
+        
+        <div className="mainButtons">
+          <Link className='btn' onClick={handleClickLogIn}>Tic-Tac-Toe</Link> 
+          <Link to='/wordle' className='btn'>Wordle</Link>
+          <Link to='/battleShips' className="btn">Battle Ships</Link>
+          <Link to='/slidingPuzzle' className="btn">Sliding Puzzle</Link>
+          <Link to='/headHunter' className="btn">Head Hunter</Link>
+        </div>
+        
+
 
         {!clicked? 
           null: 
@@ -91,7 +96,7 @@ export default function Main(props) {
             <input className="mainInput" placeholder="Player 1 name" onChange={handleChange1}/> 
             <input className="mainInput" placeholder="Player 2 name" onChange={handleChange2}/>
             <br/>
-            <Link to='/test' className="btn">Scoreboard</Link>
+            <Link to='/scoreBoard' className="btn">Scoreboard</Link>
             {!clicked? 
             null
             : 
