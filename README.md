@@ -22,25 +22,18 @@ To get started, download the repository as a ZIP file:
 
 Make sure you have the following installed:
 
-- A code editor (e.g., [IntelliJ](https://www.jetbrains.com/idea/), Visual Studio Code, etc.)
+- A code editor (e.g., [](https://www.jetbrains.com/idea/), Visual Studio Code, etc.)
 
 ### Steps
 
-1. **Navigate to the Backend Directory:**
-
-   Open your terminal or command prompt, and run:
-
-   ```bash
-   cd path/to/'Game-center BackEnd'
-   ```
-
-2. **Run the Backend:**
-
-   - Locate the main application class (usually annotated with `@SpringBootApplication`).
+**Run the Backend server:**
+   - Launch your code editor, `IntelliJ`.
+   - Open the project located at `path/to/'Game-center BackEnd`.  
+   - Find the main application class, which is typically annotated with`@SpringBootApplication`.
    - Click the green “Run” button (a play icon) in the top right corner of IntelliJ.
 
 
-   > **Note:** The server typically runs on `http://localhost:9191`. Check your terminal for any specific messages or logs.
+> **Note:** The server typically runs on `http://localhost:9191`. Check your terminal for any specific messages or logs.
 
 ## Getting Started with the Frontend
 
