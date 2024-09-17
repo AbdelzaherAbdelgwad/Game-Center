@@ -188,15 +188,26 @@ table {
 }
 /* end of sliding puzzle */
 /* Head Hunter  */
+.headHunterTitle{
+  border: 1px black solid;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #eca2a5;
+}
+.headHunterButtons{
+  margin: 30px 10px;
+}
 
 .headHunterContainer{
   cursor: crosshair;
+  
   margin: 10px 50px;
   border: 1px black solid;
   height: 70vh;
   padding: 20px;
   border-radius: 5px;
- 
+  background-color: #606164;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 .headHunterNav{
   display: grid;
