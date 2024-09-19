@@ -200,7 +200,6 @@ table {
 
 .headHunterContainer{
   cursor: crosshair;
-  
   margin: 10px 50px;
   border: 1px black solid;
   height: 70vh;
@@ -214,6 +213,15 @@ table {
   grid-template-columns: repeat(3,auto);
   justify-content: space-between;
   margin: auto 50px;
+}
+.HeadHunterScoresDiv{
+  border: 1px black solid;
+  width: 75%;
+  text-align: center;
+  margin: auto;
+  padding: 30px;
+  border-radius: 20px;
+  margin-top: 50px;
 }
 /* end of head hunter */
 .newGame{

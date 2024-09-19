@@ -9,7 +9,7 @@ export default function Board() {
 // constants
   const [boardSquares,setBoardSquares] = useState(Array(9).fill(null))
   const [draw,setDraw] = useState("")
-  const [newGame,setNewGame]= useState(false)
+  const [accessScoreBoard,setAccessScoreBoard]= useState(false)
   const [isX,setIsX] = useState(true)
   const [player1,setplayer1] = useState(localStorage.getItem('player1'))
   const [player2,setplayer2] = useState(localStorage.getItem('player2'))
@@ -17,6 +17,7 @@ export default function Board() {
   const [player2Wins,setPlayer2Wins] = useState()
   const [player1Losses,setPlayer1Losses] = useState()
   const [player2Losses,setPlayer2Losses] = useState()
+
   
 //  get request wins
   useEffect(()=>{
@@ -37,17 +38,18 @@ export default function Board() {
   },[player1,player2])
   
   // update winner
-  const updateScoreboard= ()=>{
+  const updateScoreboard= async ()=>{
     console.log("update score called")
-    if(isX){
+    try{
+      if(isX){
       
-      axios.post('http://localhost:9191/Scores/updateScore',{
+      await axios.post('http://localhost:9191/Scores/updateScore',{
         "playerName": player1,
         wins: player1Wins+1,
         losses:player1Losses
       }).then(res => {setPlayer1Wins(res.data.wins)})
 
-      axios.post('http://localhost:9191/Scores/updateScore',{
+      await axios.post('http://localhost:9191/Scores/updateScore',{
         "playerName": player2,
         wins: player2Wins,
         losses:player2Losses + 1
@@ -55,20 +57,23 @@ export default function Board() {
 
       
     }else{
-      axios.post('http://localhost:9191/Scores/updateScore',{
+      await axios.post('http://localhost:9191/Scores/updateScore',{
         "playerName": player2,
         wins: player2Wins + 1,
         losses:player2Losses
       }).then(res => {setPlayer2Wins(res.data.wins)})
 
-      axios.post('http://localhost:9191/Scores/updateScore',{
+      await axios.post('http://localhost:9191/Scores/updateScore',{
           "playerName": player1,
           wins: player1Wins,
           losses:player1Losses +1
-        }).then(res => {setPlayer1Losses(res.data.wins)})
-      
-      
-    }
+        }).then(res => {setPlayer1Losses(res.data.wins)})  
+    } setAccessScoreBoard(true)
+  }
+    catch (error) {
+      console.error("Error posting data:", error);
+  }
+    
   }
 
 
@@ -102,7 +107,6 @@ export default function Board() {
   function clearBoard(){
     const board = Array(9).fill(null)
     setDraw("")
-    setNewGame(x=>!x)
     setBoardSquares(board);
     setIsX(x=>!x)
   }
@@ -127,8 +131,8 @@ export default function Board() {
   return null  }
  
 return (
-  <div>
 
+  <div>
       {player1 && player2 && <h3>{player1} vs {player2}</h3> }
       {!calculateWinner(boardSquares) &&<h2>Next Player: {isX? player1+ " (X)" :player2+ " (O)"}</h2>}
       
@@ -151,6 +155,7 @@ return (
   {calculateWinner(boardSquares)? <h1>winner is : {calculateWinner(boardSquares)==="X"? player1+" (X)":player2+" (O)"}</h1>:null}
   {draw? <h1>Draw</h1>:null}
   </div>
+  )
   
-)
+
 }

@@ -7,7 +7,6 @@ export default function Main(props) {
   const [player1,setplayer1] = useState({})
   const [player2,setplayer2] = useState({})
   const [playersNames,setPlayersNames] = useState([])
-
   const [headHunterclicked,setHeadHunterClicked] = useState(false)
   const [headHunterPlayer,setHeadHunterPlayer] = useState({})
   const [headHunterPlayers,setHeadHunterPlayers] = useState([])
@@ -19,12 +18,13 @@ export default function Main(props) {
     })
     axios.get('http://localhost:9191/playerInfo/getAllPlayers')
     .then((res)=>{setHeadHunterPlayers(res.data.map(player=>player.name))})
+    localStorage.setItem("auth",false)
   },[])
   // TicTacToe Game
   const addPlayer1 =()=>{
     axios.post('http://localhost:9191/Scores/savePlayer', 
       {
-      "playerName": player1.playerName,
+      'playerName': player1.playerName,
       wins: 0,
       losses:0
     })
@@ -33,7 +33,7 @@ export default function Main(props) {
   const addPlayer2 =()=>{
     axios.post('http://localhost:9191/Scores/savePlayer', 
       {
-      "playerName": player2.playerName,
+      'playerName': player2.playerName,
       wins: 0,
       losses:0
     })
@@ -99,6 +99,7 @@ export default function Main(props) {
         setHeadHunterPlayer((x)=>{return {name:e.target.value}})
     }
     function handleClickStartHeadHunter(){
+      localStorage.setItem("auth",true)
       if(headHunterPlayers.includes(headHunterPlayer.name)){
         console.log("exist player")
         return null
@@ -134,14 +135,14 @@ export default function Main(props) {
             : 
             (player1.playerName && player2.playerName && player2.playerName !== player1.playerName)
             &&
-            <Link to='/board' className='btn' onClick={handleClickGoTo}>Start the game</Link>
+            <Link to='/ticTacToe' className='btn' onClick={handleClickGoTo} >Start the game</Link>
             }
           </div>}
           {headHunterclicked?
             <div>
               <h2>-- ADD YOUR NAME --</h2>
               <input className="mainInput" placeholder="Player name" onChange={handleHeadHunterChange}/>
-              {headHunterPlayer.name ?<Link to='/headHunter' className="btn" onClick={handleClickStartHeadHunter}>Start the game</Link>:null}
+              {headHunterPlayer.name ?<Link to='/headHunter' className="btn" onClick={handleClickStartHeadHunter} reloadDocument>Start the game</Link>:null}
             </div>
             :
             null

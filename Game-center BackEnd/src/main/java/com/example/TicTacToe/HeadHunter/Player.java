@@ -19,5 +19,5 @@ public class Player {
     Long id;
     String name;
     int score;
-    float accuracy;
+    float accuracy ;
 }
