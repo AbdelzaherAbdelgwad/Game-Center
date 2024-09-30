@@ -19,6 +19,8 @@ export default function Main(props) {
     axios.get('http://localhost:9191/playerInfo/getAllPlayers')
     .then((res)=>{setHeadHunterPlayers(res.data.map(player=>player.name))})
     localStorage.setItem("auth",false)
+    localStorage.setItem("authTicTacToe",false)
+
   },[])
   // TicTacToe Game
   const addPlayer1 =()=>{
@@ -60,6 +62,7 @@ export default function Main(props) {
   }
     
   function handleClickGoTo(){
+    localStorage.setItem('authTicTacToe',true)
     setTicClicked(false)
 
     if(playersNames.includes(player1.playerName)){
@@ -110,7 +113,7 @@ export default function Main(props) {
   // end of HeadHunter
   return (
     <div className="HomePageDiv">
-        <h1 className="HomePageTitle">Game Center</h1>
+        <h1 className="HomePageTitle">- GAME CENTER -</h1>
         
         <div className="mainButtons">
           <Link className='btn' onClick={handleClickLogIn}>Tic-Tac-Toe</Link> 
@@ -137,7 +140,7 @@ export default function Main(props) {
             : 
             (player1.playerName && player2.playerName && player2.playerName !== player1.playerName)
             &&
-            <Link to='/ticTacToe' className='btn' onClick={handleClickGoTo} >Start the game</Link>
+            <Link to='/ticTacToe' className='btn' onClick={handleClickGoTo} reloadDocument >Start the game</Link>
             }
           </div>}
           {headHunterclicked?

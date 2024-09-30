@@ -54,6 +54,7 @@
 
 .App {
   text-align: center;
+  font-family: "Gumela";
 }
 
 .App-logo {
@@ -66,6 +67,16 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+@font-face {
+  font-family: "Gumela";
+  src: url("https://db.onlinewebfonts.com/t/00561b492d88a5287a5def1e83a34882.eot");
+  src: url("https://db.onlinewebfonts.com/t/00561b492d88a5287a5def1e83a34882.eot?#iefix")format("embedded-opentype"),
+  url("https://db.onlinewebfonts.com/t/00561b492d88a5287a5def1e83a34882.woff2")format("woff2"),
+  url("https://db.onlinewebfonts.com/t/00561b492d88a5287a5def1e83a34882.woff")format("woff"),
+  url("https://db.onlinewebfonts.com/t/00561b492d88a5287a5def1e83a34882.ttf")format("truetype"),
+  url("https://db.onlinewebfonts.com/t/00561b492d88a5287a5def1e83a34882.svg#Gumela")format("svg");
+}
+
 
 .App-header {
   background-color: #282c34;
@@ -91,6 +102,7 @@
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
+  font-family: "Gumela";
 }
 .wordleBoard{
   display: grid;
@@ -152,7 +164,7 @@ table {
   grid-template-rows: repeat(10,53px);
   grid-template-columns: repeat(10,53px);
   justify-content: center;
-  margin: 50px;
+  margin: 20px 50px ;
 }
 .BattleShipSquare:hover{
   box-shadow: 10px 5px 5px rgb(169, 169, 169);
@@ -166,7 +178,7 @@ table {
   margin: auto;
   padding: 30px;
   border-radius: 20px;
-  margin-top: 50px;
+  margin-top: 3vh;
 }
 /* end of battleShips */
 
@@ -225,6 +237,21 @@ table {
 }
 /* end of head hunter */
 /* Sudoku */
+.titleSudoku{
+  font-size: 15vh;
+ }
+.mainSudoku{
+  display: grid;
+  grid-template-columns: repeat(2,auto);
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  column-gap: 10vw;
+  margin: 10vh 10vh 2vh;
+  border: 2px solid gray;
+  border-radius: 10px;
+  background-color: #e8e8e8;
+}
 .sudokuBoard{
   display: grid;
   grid-template-rows: repeat(9,53px);
@@ -239,6 +266,7 @@ table {
   width: 50px;
 }
 .sudokuInput {
+  font-family: "Gumela";
   border: 3px solid black;
   background-color: #ffaeae  ;
   height: 50px;
@@ -307,6 +335,7 @@ a {
   margin-top: 50px;
 }
 .HomePageTitle{
+    letter-spacing: 2vw;
     border: 1px #535353 solid;
     border-radius: 510px;
     padding: 10px;

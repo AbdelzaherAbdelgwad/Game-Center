@@ -37,7 +37,7 @@ export default function ScoreBoard() {
 
   return (
     <div className='HomePageDiv'>
-        <h1 className='HomePageTitle'>Scoreboard</h1>         
+        <h1 className='HomePageTitle'>- SCOREBOARD -</h1>         
         {allPlayers[0] 
             && 
         <table> 

@@ -125,7 +125,7 @@ export default function BattleShipsBoard() {
 
   return (
     <div className='BattleShipsMainDiv'>
-      <h1 className='HomePageTitle'>BattleShips</h1>
+      <h1 className='HomePageTitle'>- BATTLE SHIPS -</h1>
       <div className='BattleShipContainer'>
         <div>
           <h1>Player's Ships</h1>

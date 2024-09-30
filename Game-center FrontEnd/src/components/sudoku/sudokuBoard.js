@@ -48,25 +48,31 @@ export default function SudokuBoard() {
     
   return (
     <div>
-        <h1>Sudoku</h1>
+    <div className='mainSudoku'>
+        <div>
+        <h1 className='titleSudoku'>Sudoku</h1>
         {winner?<h1>you won</h1>:null}
-        <div className='sudokuBoard'>
-            
+        </div>
+        <div>
+        <div className='sudokuBoard'>  
             {board.map((value,index)=>{
                     return <SudokuSquare
                             key = {index}
                             value ={boardValues[index] || '' }
                             onChange={(e)=>handelChange(e,index)}
                             disabled ={startingClues[index]}   
-                /> 
-               
-             
+                />         
             })}
         </div>
-        <Link reloadDocument to='/sudoku' className="btn">New Game</Link>
-        <Link to='/' className="btn">Home Page</Link>
-        {winner? <><Confetti/> <h2>Congratulation you got the right answer</h2></>:null}
+        
+        </div>
+        
     </div>
+      <Link reloadDocument to='/sudoku' className="btn">New Game</Link>
+      <Link to='/' className="btn">Home Page</Link>
+      {winner? <><Confetti/> <h2>Congratulation you got the right answer</h2></>:null}
+    </div>
+    
     
   )
 }

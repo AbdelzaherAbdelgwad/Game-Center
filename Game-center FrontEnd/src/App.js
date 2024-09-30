@@ -14,6 +14,7 @@ const SudokuBoard = lazy(() => import('./components/sudoku/sudokuBoard'));
 
 function App() {
   const [isAuthenticated, setAuthenticated] = useState(localStorage.getItem("auth"));
+  const [isTicAuth] = useState(localStorage.getItem("authTicTacToe"));
 
   return (
     <div className="App">
@@ -21,12 +22,21 @@ function App() {
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route path='/' element={<Main />} />
-            <Route path='/ticTacToe' element={<Board />} />
+
+            {isTicAuth === 'true' ? 
+            <Route path='/ticTacToe' element={<Board />} />:
+            <Route path='/ticTacToe' element={
+                <Link to={'/'} className='btn' style={{ marginTop: '50vh', padding: '3%' }}>
+                  Unauthorized, go back home
+                </Link>
+              }/>}
+
             <Route path='/scoreBoard' element={<ScoreBoard />} />
             <Route path='/wordle' element={<WordleBoard />} />
             <Route path='/battleShips' element={<BattleShipsBoard />} />
             <Route path='/slidingPuzzle' element={<SlidingPuzzleBoard />} />
             <Route path='/sudoku' element={<SudokuBoard />} />
+
             {isAuthenticated === 'true' ? (
               <Route path='/headHunter' element={<HeadHunter />} />
             ) : (
@@ -36,6 +46,7 @@ function App() {
                 </Link>
               }/>
             )}
+            
           </Routes>
         </Suspense>
       </BrowserRouter>
