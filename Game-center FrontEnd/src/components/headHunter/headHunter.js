@@ -21,9 +21,9 @@ export default function HeadHunter() {
     const [clickCounter,setClickCounter] = useState(0)
     const [accuracy,setAccuracy] = useState(0)
     const [startTime,setStartTime] = useState(false)
-    const [Time,setTime] = useState(1)
+    const [Time,setTime] = useState(60)
     const [currentPlayer,setCurrentPlayer] = useState(localStorage.getItem("headHunterPlayer"))
-    const [playersData,setPlayersData] = useState([])
+    // const [playersData,setPlayersData] = useState([])
     const [render,setRender] = useState(false)
     const updateDataBase = async () => {
         try {

@@ -118,6 +118,8 @@ export default function Main(props) {
           <Link to='/battleShips' className="btn">Battle Ships</Link>
           <Link to='/slidingPuzzle' className="btn">Sliding Puzzle</Link>
           <Link className="btn" onClick={handleClickUser}>Head Hunter</Link>
+          <Link className="btn" to='/sudoku'>Sudoku</Link>
+
         </div>
         
 
