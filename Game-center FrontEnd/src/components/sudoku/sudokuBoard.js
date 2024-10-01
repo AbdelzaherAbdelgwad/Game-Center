@@ -8,7 +8,7 @@ export default function SudokuBoard() {
 
     const [board,setBoard] = useState(Array(81).fill(null))
     const [boardValues,setBoardValues] = useState(Array(81).fill(null))
-    const [cluesPositions, cluesValues] = Clues(50)
+    const [cluesPositions, cluesValues] = Clues(28)
     const [winner,setWinner] = useState(false)
     const [startingClues,setStartingClues] = useState(Array(81).fill(null))
 
