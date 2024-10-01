@@ -9,26 +9,31 @@ export default function Clues(noOfClues) {
     }
     let positions = [...uniqueRandomPositions]
     // values
-    randomValues.forEach((_, index) => {
-        const clueIndex = positions[index];
-        const [clueRow, clueCol, clueBlock] = NoRepeatLogic(clueIndex);
-        let newValue;
-        const existingValues = new Set();
-    [...clueCol,...clueBlock,...clueRow].forEach((value,_) => {
-            if (positions.includes(value) && value !== clueIndex) {
-                const existingValue = randomValues[positions.indexOf(value)];
-                existingValues.add(existingValue); 
-            }
-        });
+    // Efficient Sudoku Fill
+randomValues.forEach((_, index) => {
+    const clueIndex = positions[index];
+    const [clueRow, clueCol, clueBlock] = NoRepeatLogic(clueIndex);
     
-        
-    
-        do {
-            newValue = Math.floor(Math.random() * 9) + 1;
-        } while (existingValues.has(newValue)); 
-    
-        randomValues[index] = newValue; 
+    // Create a set of existing values
+    const existingValues = new Set();
+    const allClueValues = [...clueRow, ...clueCol, ...clueBlock];
+
+    allClueValues.forEach(value => {
+        if (positions.includes(value) && value !== clueIndex) {
+            const existingValue = randomValues[positions.indexOf(value)];
+            existingValues.add(existingValue);
+        }
     });
+
+    // Create a list of possible values (1-9)
+    const possibleValues = Array.from({ length: 9 }, (_, i) => i + 1)
+                               .filter(value => !existingValues.has(value));
+    
+    // Randomly assign a value from the filtered possible values
+    const randomIndex = Math.floor(Math.random() * possibleValues.length);
+    randomValues[index] = possibleValues[randomIndex];
+});
+
     
   return (
     [positions,randomValues]
