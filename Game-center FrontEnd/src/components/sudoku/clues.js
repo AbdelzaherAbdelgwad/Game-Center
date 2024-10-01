@@ -1,42 +1,36 @@
 import NoRepeatLogic from "./noRepeatLogic";
 
 export default function Clues(noOfClues) {
-    let uniqueRandomPositions = Array(noOfClues).fill(null)
+    // Generate unique random positions
     let randomValues = Array(noOfClues).fill(null)
-    // indexes
-    uniqueRandomPositions.forEach((value,index)=>{
-        let newValue;
-        do {
-            newValue = Math.floor(Math.random() * 81);
-        } while (uniqueRandomPositions.includes(newValue));
-                
-        uniqueRandomPositions[index] = newValue
-    })
-    // values
-    randomValues.forEach((_, index) => {
-        const clueIndex = uniqueRandomPositions[index];
+
+    const uniqueRandomPositions = new Set();
+    while (uniqueRandomPositions.size < noOfClues) {
+        uniqueRandomPositions.add(Math.floor(Math.random() * 81));
+    }
+    const positionsArray = Array.from(uniqueRandomPositions);
+
+    // Generate values for each position
+     randomValues = positionsArray.map(clueIndex => {
         const [clueRow, clueCol, clueBlock] = NoRepeatLogic(clueIndex);
-        let newValue;
-    
         const existingValues = new Set();
-    
-    [...clueCol,...clueBlock,...clueRow].forEach(value => {
-            if (uniqueRandomPositions.includes(value) && value !== clueIndex) {
-                const existingValue = randomValues[uniqueRandomPositions.indexOf(value)];
-                existingValues.add(existingValue); 
+
+        // Collect existing values in the same row, column, and block
+        [...clueRow, ...clueCol, ...clueBlock].forEach(value => {
+            if (positionsArray.includes(value) && value !== clueIndex) {
+                const existingValue = randomValues[positionsArray.indexOf(value)];
+                if (existingValue) existingValues.add(existingValue);
             }
         });
-    
-        
-    
+
+        // Generate a new unique value
+        let newValue;
         do {
             newValue = Math.floor(Math.random() * 9) + 1;
-        } while (existingValues.has(newValue)); 
-    
-        randomValues[index] = newValue; 
+        } while (existingValues.has(newValue));
+
+        return newValue;
     });
-    
-  return (
-    [uniqueRandomPositions,randomValues]
-  )
+
+    return [positionsArray, randomValues];
 }

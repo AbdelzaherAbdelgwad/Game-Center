@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import SudokuSquare from './sudokuSquare'
 import Clues from './clues'
 import winCheck from './winCheck'
 import { Link } from 'react-router-dom'
 import Confetti from 'react-confetti';
 export default function SudokuBoard() {
+
     const [board,setBoard] = useState(Array(81).fill(null))
-    const [render,setRender] = useState(false)
     const [boardValues,setBoardValues] = useState(Array(81).fill(null))
-    const [cluesPositions, cluesValues] = Clues(25)
+    const [cluesPositions, cluesValues] = Clues(50)
     const [winner,setWinner] = useState(false)
     const [startingClues,setStartingClues] = useState(Array(81).fill(null))
 
@@ -16,7 +16,7 @@ export default function SudokuBoard() {
       const updateBoardValues = async () => {
           setBoardValues((prev) => {
               let newValues = [...prev];
-              newValues.forEach((value, index) => {
+              newValues.forEach((_, index) => {
                   if (cluesPositions.includes(index)) {
                       const clueIndex = cluesPositions.indexOf(index);
                       newValues[index] = cluesValues[clueIndex]; 
@@ -26,7 +26,6 @@ export default function SudokuBoard() {
               setStartingClues(newValues)
               return newValues; 
           });
-          setRender(true)
       };
       updateBoardValues();
   }, []);
@@ -71,8 +70,8 @@ export default function SudokuBoard() {
       <Link reloadDocument to='/sudoku' className="btn">New Game</Link>
       <Link to='/' className="btn">Home Page</Link>
       {winner? <><Confetti/> <h2>Congratulation you got the right answer</h2></>:null}
+    
     </div>
-    
-    
+
   )
 }

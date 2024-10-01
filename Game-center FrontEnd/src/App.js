@@ -13,7 +13,7 @@ const HeadHunter = lazy(() => import('./components/headHunter/headHunter'));
 const SudokuBoard = lazy(() => import('./components/sudoku/sudokuBoard'));
 
 function App() {
-  const [isAuthenticated, setAuthenticated] = useState(localStorage.getItem("auth"));
+  const [isAuthorized] = useState(localStorage.getItem("auth"));
   const [isTicAuth] = useState(localStorage.getItem("authTicTacToe"));
 
   return (
@@ -37,7 +37,7 @@ function App() {
             <Route path='/slidingPuzzle' element={<SlidingPuzzleBoard />} />
             <Route path='/sudoku' element={<SudokuBoard />} />
 
-            {isAuthenticated === 'true' ? (
+            {isAuthorized === 'true' ? (
               <Route path='/headHunter' element={<HeadHunter />} />
             ) : (
               <Route path='/headHunter' element={
@@ -46,7 +46,7 @@ function App() {
                 </Link>
               }/>
             )}
-            
+
           </Routes>
         </Suspense>
       </BrowserRouter>
