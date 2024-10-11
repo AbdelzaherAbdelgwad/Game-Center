@@ -1,6 +1,7 @@
 import './App.css';
 import React, { lazy, Suspense, useState } from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
+import Login from './components/logIn/login';
 
 // Lazy load components
 const Main = lazy(() => import('./components/main'));
@@ -13,40 +14,45 @@ const HeadHunter = lazy(() => import('./components/headHunter/headHunter'));
 const SudokuBoard = lazy(() => import('./components/sudoku/sudokuBoard'));
 
 function App() {
-  const [isAuthorized] = useState(localStorage.getItem("auth"));
-  const [isTicAuth] = useState(localStorage.getItem("authTicTacToe"));
+  const [isAuthorized] = useState(localStorage.getItem("auth") === 'true');
+  const [isTicAuth] = useState(localStorage.getItem("authTicTacToe") === 'true');
+  const [isLogin, setIsLogin] = useState(localStorage.getItem("Login") === 'true'); //localStorage.getItem("Login") === 'true'
+
+  function handleLogin(state) {
+    setIsLogin(state);
+  }
 
   return (
     <div className="App">
       <BrowserRouter>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
-            <Route path='/' element={<Main />} />
-
-            {isTicAuth === 'true' ? 
-            <Route path='/ticTacToe' element={<Board />} />:
-            <Route path='/ticTacToe' element={
-                <Link to={'/'} className='btn' style={{ marginTop: '50vh', padding: '3%' }}>
-                  Unauthorized, go back home
-                </Link>
-              }/>}
-
-            <Route path='/scoreBoard' element={<ScoreBoard />} />
-            <Route path='/wordle' element={<WordleBoard />} />
-            <Route path='/battleShips' element={<BattleShipsBoard />} />
-            <Route path='/slidingPuzzle' element={<SlidingPuzzleBoard />} />
-            <Route path='/sudoku' element={<SudokuBoard />} />
-
-            {isAuthorized === 'true' ? (
-              <Route path='/headHunter' element={<HeadHunter />} />
+            <Route path='/login' element={<Login onLogin={handleLogin} />} />
+            {isLogin ? (
+              <>
+                <Route path='/home' element={<Main />} />
+                <Route path='/ticTacToe' element={
+                  isTicAuth ? <Board /> : 
+                  <Link to='/' className='btn' style={{ marginTop: '50vh', padding: '3%' }}>
+                    Unauthorized, go back home
+                  </Link>
+                } />
+                <Route path='/scoreBoard' element={<ScoreBoard />} />
+                <Route path='/wordle' element={<WordleBoard />} />
+                <Route path='/battleShips' element={<BattleShipsBoard />} />
+                <Route path='/slidingPuzzle' element={<SlidingPuzzleBoard />} />
+                <Route path='/sudoku' element={<SudokuBoard />} />
+                <Route path='/headHunter' element={
+                  isAuthorized ? <HeadHunter /> :
+                  <Link to='/' className='btn' style={{ marginTop: '50vh', padding: '3%' }}>
+                    Unauthorized, go back home
+                  </Link>
+                } />
+                <Route path='*' element={<Navigate to='/home' />} />
+              </>
             ) : (
-              <Route path='/headHunter' element={
-                <Link to={'/'} className='btn' style={{ marginTop: '50vh', padding: '3%' }}>
-                  Unauthorized, go back home
-                </Link>
-              }/>
+              <Route path='*' element={<Navigate to='/login' />} />
             )}
-
           </Routes>
         </Suspense>
       </BrowserRouter>

@@ -8,7 +8,10 @@
 //      If the blank tile is on an even row (1st or 3rd row from the bottom) and the number of inversions is odd.
 //      If the blank tile is on an odd row (0th or 2nd row from the bottom) and the number of inversions is even.
 
+
+
 export default function isSolvable(puzzle) {
+   
         const countInversions = (arr) => {
             let inversions = 0;
             for (let i = 0; i < arr.length; i++) {
@@ -28,6 +31,8 @@ export default function isSolvable(puzzle) {
     
         return solvable;
     }
+
+
     
    
 

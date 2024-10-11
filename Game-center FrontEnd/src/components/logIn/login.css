@@ -1,0 +1,21 @@
+.loginContainer{
+    border: 1px black solid;
+    width: 30vw;
+    margin: 10vh auto auto;
+    border-radius: 10px;
+    padding: 2vh;
+}
+.loginInputs{
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    row-gap: 1vh;
+    justify-content: space-evenly;
+
+}
+.inputLogin{
+    width: 15vw;
+    height: 5vh;
+    margin: auto;
+    font-size: large;
+    padding-left: 1vw;
+}

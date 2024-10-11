@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-export default function Main(props) {
-
+export default function Main() {
+  const userName = localStorage.getItem("Username")
   const [ticClicked,setTicClicked] = useState(false)
-  const [player1,setplayer1] = useState({})
-  const [player2,setplayer2] = useState({})
+  // tictactoePlayer
+  const [player1Tictactoe,setPlayer1Tictactoe] = useState({})
+  const [player2Tictactoe,setPlayer2Tictactoe] = useState({})
   const [playersNames,setPlayersNames] = useState([])
+    // end of tictactoePlayer
   const [headHunterclicked,setHeadHunterClicked] = useState(false)
   const [headHunterPlayer,setHeadHunterPlayer] = useState({})
   const [headHunterPlayers,setHeadHunterPlayers] = useState([])
@@ -23,37 +25,37 @@ export default function Main(props) {
 
   },[])
   // TicTacToe Game
-  const addPlayer1 =()=>{
+  const addPlayer1Tictactoe =()=>{
     axios.post('http://localhost:9191/Scores/savePlayer', 
       {
-      'playerName': player1.playerName,
+      'playerName': player1Tictactoe.playerName,
       wins: 0,
       losses:0
     })
   }
 
-  const addPlayer2 =()=>{
+  const addPlayer2Tictactoe =()=>{
     axios.post('http://localhost:9191/Scores/savePlayer', 
       {
-      'playerName': player2.playerName,
+      'playerName': player2Tictactoe.playerName,
       wins: 0,
       losses:0
     })
     }
 
   function handleChange1(e){
-    setplayer1((x)=>{return {...x,playerName:e.target.value}})
+    setPlayer1Tictactoe((x)=>{return {...x,playerName:e.target.value}})
   }
 
   function handleChange2(e){
-    setplayer2((x)=>{return {...x,playerName:e.target.value}})
+    setPlayer2Tictactoe((x)=>{return {...x,playerName:e.target.value}})
   } 
 
   useEffect(() => {
-    localStorage.setItem('player1', player1.playerName);
-    localStorage.setItem('player2', player2.playerName);
+    localStorage.setItem('player1', player1Tictactoe.playerName);
+    localStorage.setItem('player2', player2Tictactoe.playerName);
     localStorage.setItem('headHunterPlayer', headHunterPlayer.name);
-  }, [player1,player2,headHunterPlayer]);
+  }, [player1Tictactoe,player2Tictactoe,headHunterPlayer]);
 
   
   function handleClickLogIn(){
@@ -65,22 +67,22 @@ export default function Main(props) {
     localStorage.setItem('authTicTacToe',true)
     setTicClicked(false)
 
-    if(playersNames.includes(player1.playerName)){
-      if(playersNames.includes(player2.playerName)){
+    if(playersNames.includes(player1Tictactoe.playerName)){
+      if(playersNames.includes(player2Tictactoe.playerName)){
         return null
       }
-      addPlayer2()
+      addPlayer2Tictactoe()
     }
-    else if (playersNames.includes(player2.playerName)){
-      if(playersNames.includes(player1.playerName)){
+    else if (playersNames.includes(player2Tictactoe.playerName)){
+      if(playersNames.includes(player1Tictactoe.playerName)){
         return null
       }
-      addPlayer1()
+      addPlayer1Tictactoe()
     
     }
     else{
-      addPlayer1()
-      addPlayer2()
+      addPlayer1Tictactoe()
+      addPlayer2Tictactoe()
     }
   
   }
@@ -111,10 +113,13 @@ export default function Main(props) {
       }
     }
   // end of HeadHunter
+  function handleLogout(){
+    localStorage.setItem('Login','false')
+  }
   return (
     <div className="HomePageDiv">
         <h1 className="HomePageTitle">- GAME CENTER -</h1>
-        
+        {userName?<h2>Welcome {userName}</h2>:null}
         <div className="mainButtons">
           <Link className='btn' onClick={handleClickLogIn}>Tic-Tac-Toe</Link> 
           <Link to='/wordle' className='btn'>Wordle</Link>
@@ -122,9 +127,8 @@ export default function Main(props) {
           <Link to='/slidingPuzzle' className="btn">Sliding Puzzle</Link>
           <Link className="btn" onClick={handleClickUser}>Head Hunter</Link>
           <Link className="btn" to='/sudoku'>Sudoku</Link>
-
         </div>
-        
+        <Link className="btn" to='/login' style={{backgroundColor:'red'}} onClick={handleLogout}>Logout</Link>
 
 
         {!ticClicked? 
@@ -138,7 +142,7 @@ export default function Main(props) {
             {!ticClicked? 
             null
             : 
-            (player1.playerName && player2.playerName && player2.playerName !== player1.playerName)
+            (player1Tictactoe.playerName && player2Tictactoe.playerName && player2Tictactoe.playerName !== player1Tictactoe.playerName)
             &&
             <Link to='/ticTacToe' className='btn' onClick={handleClickGoTo} reloadDocument >Start the game</Link>
             }
