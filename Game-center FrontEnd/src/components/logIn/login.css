@@ -4,13 +4,15 @@
     margin: 10vh auto auto;
     border-radius: 10px;
     padding: 2vh;
+    box-shadow: rgba(149, 157, 165, 0.9) 5px 5px 30px;
+    background-color: gainsboro;
 }
-.loginInputs{
+.loginInputsDiv{
     display: grid;
     grid-template-columns: repeat(2,auto);
     row-gap: 1vh;
     justify-content: space-evenly;
-
+    
 }
 .inputLogin{
     width: 15vw;
@@ -18,4 +20,6 @@
     margin: auto;
     font-size: large;
     padding-left: 1vw;
+    border-radius: 10px;
+    border: 1px solid #7e7e7e;
 }

@@ -66,13 +66,14 @@ export default function Login({ onLogin }) {
     setSignUp(singed)
 
   }
+ 
   return (
-    <div>
+    <div >
     {!signUp?
     
         <div className='loginContainer'>
           <h1>Login</h1>
-          <div className='loginInputs'>
+          <div className='loginInputsDiv'>
             <h2>Username</h2>
             <input className="inputLogin" name='username' placeholder='Username' onChange={handleChange} value={username} />
             <h2>Password</h2>
@@ -83,6 +84,7 @@ export default function Login({ onLogin }) {
         </div>
 
       :<Signup signData={setAccountInfo}/>}
+      
     </div>
     
     

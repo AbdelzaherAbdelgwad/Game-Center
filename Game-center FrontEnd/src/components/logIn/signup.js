@@ -54,7 +54,7 @@ export default function Signup({signData}) {
     return (
         <div className='loginContainer'>
           <h1>Register</h1>
-          <div className='loginInputs'>
+          <div className='loginInputsDiv'>
             <h2>Email</h2>
             <input className="inputLogin" name='email' placeholder='Email' onChange={handleChange} value={email} />
             <h2>Username</h2>

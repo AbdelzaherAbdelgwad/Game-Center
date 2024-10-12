@@ -343,3 +343,11 @@ a {
     margin: auto;
     background-color: #d4d4d4;
 }
+body{
+  background-image: url('../public/puzzle.png');
+  background-repeat: repeat; /* Use 'no-repeat', 'repeat-x', or 'repeat-y' if needed */
+  background-size: 20%; /* Set to 'contain' or specify dimensions like '100px 100px' if necessary */
+  background-position: top left;
+  background-color: rgba(255, 255, 255, 0.95);
+  background-blend-mode: color;
+}
