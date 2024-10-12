@@ -25,17 +25,22 @@ export default function WordleBoard() {
         }
       };
     //get all english words
-    useEffect(()=>{ axios.get('./allWords.json')
+    useEffect(()=>{ 
+        axios.get('./allWords.json')
         .then((res)=>{setAllWords(res.data);
-        setLoading(false);
+            setLoading(false);
         })
+        
     },[])  
     //the solution
-    useEffect(()=>{axios.get("https://random-word-api.herokuapp.com/word?length=5")
-        .then((res)=>{setSolution(res.data[0]);
-        inputRef.current[0].focus();
+    useEffect(()=>{
+        axios.get('https://random-word-api.vercel.app/api?words=1&length=5')
+        .then((res)=>{
+            setSolution(res.data[0])
         })
-    },[loading])
+        setTimeout(() => focusElement(0), 500);
+        }
+    ,[])
           
     
       
@@ -183,7 +188,6 @@ export default function WordleBoard() {
         <Link reloadDocument to='/wordle' className="btn">New Game</Link>
         <Link to='/' className="btn">Home Page</Link>
         {winner? <><Confetti/> <h2>Congratulation you got the right answer</h2></>:null}
-
     </div>
   )
 }

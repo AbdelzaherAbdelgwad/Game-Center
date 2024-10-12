@@ -84,7 +84,7 @@ export default function Login({ onLogin }) {
         </div>
 
       :<Signup signData={setAccountInfo}/>}
-      
+      <footer> - Crafted with love, by Abdelzaher Abdelgwad -</footer>
     </div>
     
     

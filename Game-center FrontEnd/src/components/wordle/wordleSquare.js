@@ -1,4 +1,4 @@
-
+// import './wordle.css'
 export default function WordleSquare(props,{children}) {
    
   return (
