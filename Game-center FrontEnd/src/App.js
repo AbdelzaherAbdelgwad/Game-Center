@@ -2,6 +2,7 @@ import './App.css';
 import React, { lazy, Suspense, useState } from 'react';
 import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
 import Login from './components/logIn/login';
+import SixteenPuzzleBoard from './components/sixteenPuzzle/sixteenPuzzleBoard';
 
 // Lazy load components
 const Main = lazy(() => import('./components/main'));
@@ -49,6 +50,8 @@ function App() {
                   </Link>
                 } />
                 <Route path='*' element={<Navigate to='/home' />} />
+                <Route path='/sixteenPuzzle' element={<SixteenPuzzleBoard />} />
+
               </>
             ) : (
               <Route path='*' element={<Navigate to='/login' />} />

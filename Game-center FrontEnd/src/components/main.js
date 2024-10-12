@@ -127,6 +127,7 @@ export default function Main() {
           <Link to='/slidingPuzzle' className="btn">Sliding Puzzle</Link>
           <Link className="btn" onClick={handleClickUser}>Head Hunter</Link>
           <Link className="btn" to='/sudoku'>Sudoku</Link>
+          <Link className="btn" to='/sixteenPuzzle'>sixteen Puzzle</Link>
         </div>
         <Link className="btn" to='/login' style={{backgroundColor:'red'}} onClick={handleLogout}>Logout</Link>
 
