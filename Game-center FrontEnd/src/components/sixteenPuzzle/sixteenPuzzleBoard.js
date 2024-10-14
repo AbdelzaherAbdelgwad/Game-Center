@@ -109,6 +109,7 @@ export default function SixteenPuzzleBoard() {
     
   return ( 
   <div>
+        <br/>
         <h1>Torus `Sixteen` Puzzle</h1>
         {winner?<h2>You cracked the puzzle! 🎉</h2>:null}
         <div className='sixteenPuzzleContainer'>

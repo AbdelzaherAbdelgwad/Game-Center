@@ -72,6 +72,97 @@ input{
     animation: App-logo-spin infinite 20s linear;
   }
 }
+@media screen and (max-width: 1500px) {
+  div.BattleShipContainer{
+    display: block;
+  }
+}
+@media screen and (max-width: 1350px) {
+  div.mainSudoku{
+    display: block;
+  }
+  h1.titleSudoku{
+    font-size: 5vh;
+  }
+}
+@media screen and (max-width: 700px) {
+  /* homePage */
+  div.HomePageDiv{
+    margin-left: 3vw;
+    box-shadow:blue 0px 0px 0px 2px inset, 
+    rgb(255, 255, 255) 5px -5px 0px -3px, 
+    rgb(31, 193, 27) 5px -5px, 
+    rgb(255, 255, 255) 10px -10px 0px -3px, 
+    rgb(255, 217, 19) 10px -10px, 
+    rgb(255, 255, 255) 15px -15px 0px -3px,
+    rgb(255, 156, 85) 15px -15px, 
+    rgb(255, 255, 255) 20px -20px 0px -3px,
+    rgb(255, 85, 85) 20px -20px
+  }
+  input.mainInput{
+    width: 70vw;
+  }
+  /* end of homePage */
+  /* sudoku */
+ input.sudokuInput{
+  height: 7vw;
+  width: 7vw;
+  font-size: 7vw;
+
+ }
+ div.sudokuBoard{
+  display: grid;
+  grid-template-rows: repeat(9, 8vw);
+  grid-template-columns: repeat(9, 8vw);
+  justify-content: center;
+  margin: 20px;
+}
+div.mainSudoku{
+  margin: 4vh;
+}
+/* end of sudoku */
+/* wordle */
+input.WordleSquare{
+  height: 13vw;
+  width: 13vw;
+  border-width: .5vw;
+}
+div.wordleBoard{
+  display: grid;
+  grid-template-rows: repeat(5, 13.5vw);
+  grid-template-columns: repeat(5, 13.5vw);
+  justify-content: center;
+  margin-bottom: 5vh;
+}
+/* end of wordle */
+/* battleship */
+div.BattleShipBoard{
+  display: grid;
+  grid-template-rows: repeat(10, 7.5vw);
+  grid-template-columns: repeat(10, 7.5vw);
+  justify-content: center;
+  margin: 10px 50px;
+}
+div.BattleShipSquare{
+  border: 3px solid black;
+  height: 7vw;
+  width: 7vw;
+  border-width: .5vw;
+}
+div.BattleShipsMainDiv{
+  font-size: 2vw;
+  padding: 3vw;
+  a.btn{
+    margin: 0 20px;
+  }
+}
+h1.HomePageTitle{
+  letter-spacing:normal;
+}
+/* end of battleship */
+/* sixteen puzzle */
+/* end of sixteen puzzle */
+}
 @font-face {
   font-family: "Gumela";
   src: url("https://db.onlinewebfonts.com/t/00561b492d88a5287a5def1e83a34882.eot");

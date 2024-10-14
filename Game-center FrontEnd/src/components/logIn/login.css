@@ -1,5 +1,21 @@
-body{
-    overflow: hidden;
+
+@media screen and (max-width: 1320px) {
+    div.loginContainer{
+        margin: 10vh auto auto;
+        width: 70vw;
+    }
+    div.loginInputsDiv{
+        display: block;
+
+        input{
+            width: 60vw;
+        }
+
+        h2{
+            text-align: left;
+            margin-left: 5vw;
+        }
+    }
 }
 .loginContainer{
     border: 1px black solid;
@@ -32,6 +48,5 @@ footer{
     left: 50%;
     transform: translateX(-50%); 
     padding: 20px;
-    width: 100%; 
     text-align: center;
 }

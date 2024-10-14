@@ -138,7 +138,6 @@ export default function Main() {
             <h2>-- ADD PLAYERS NAMES --</h2>
             <input className="mainInput" placeholder="Player 1 name" onChange={handleChange1}/> 
             <input className="mainInput" placeholder="Player 2 name" onChange={handleChange2}/>
-            <br/>
             <Link to='/scoreBoard' className="btn">Scoreboard</Link>
             {!ticClicked? 
             null
@@ -158,7 +157,8 @@ export default function Main() {
             null
 
           }
-          
+          <footer> - Crafted with love, by Abdelzaher Abdelgwad -</footer>
+
     </div>
   )
 }

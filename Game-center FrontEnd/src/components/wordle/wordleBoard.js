@@ -34,6 +34,7 @@ export default function WordleBoard() {
     },[])  
     //the solution
     useEffect(()=>{
+        // https://random-word-api.vercel.app/api?words=1&length=5
         axios.get('https://random-word-api.vercel.app/api?words=1&length=5')
         .then((res)=>{
             setSolution(res.data[0])
