@@ -21,11 +21,11 @@ export default function HeadHunter() {
     const [clickCounter,setClickCounter] = useState(0)
     const [accuracy,setAccuracy] = useState(0)
     const [startTime,setStartTime] = useState(false)
-    const [Time,setTime] = useState(3)
+    const [Time,setTime] = useState(60)
     const [currentPlayer,setCurrentPlayer] = useState(localStorage.getItem("headHunterPlayer"))
     // const [playersData,setPlayersData] = useState([])
     const [render,setRender] = useState(false)
-    const [oldData,setOldData] = useState(3)
+    const [oldData,setOldData] = useState()
     const updateDataBase = async () => {
         try {
             await axios.post('http://localhost:9191/playerInfo/updatePlayer', {
@@ -111,7 +111,7 @@ export default function HeadHunter() {
             {Time?<Link reloadDocument className=" btn " style={{margin:'30px 10px'}}>New Game</Link>:null}
         </div>
         <h3 style={{color:'red',marginTop: '0px'}}>UserName: {currentPlayer} | <p style={{display:'inline', color:'green'}}>TIMER: {Time} sec</p></h3>
-        {Time?<h3 style={{color:'red',margin: '0px'}}> Number of hits: {correctHits} | Accuracy: {parseFloat(accuracy.toFixed(3))}%</h3>:null}
+        {Time?<h3 style={{color:'red',margin: '0px'}} > Number of hits: {correctHits} | Accuracy: {parseFloat(accuracy.toFixed(3))}%</h3>:null}
         
 
         {Time ?<div className='headHunterContainer' onClick={handleDivClick}>
@@ -122,7 +122,7 @@ export default function HeadHunter() {
         </div>
         :
         <div>
-            <h1 style={{color:'red'}}>Number of hits: {correctHits} | Accuracy: {parseFloat(accuracy.toFixed(3))}%</h1>
+            <h1 className='headHunterScore'>Number of hits: {correctHits} | Accuracy: {parseFloat(accuracy.toFixed(3))}%</h1>
             {/* {playersData && playersData.map((player,index)=>{
                 return <h3 key={index}>{player.name} | {player.score} | {player.accuracy}%</h3>
             })} */} {render ? <HeadHunterScoreBoard/>:null}

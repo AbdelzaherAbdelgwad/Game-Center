@@ -97,12 +97,28 @@ input{
     rgb(255, 255, 255) 15px -15px 0px -3px,
     rgb(255, 156, 85) 15px -15px, 
     rgb(255, 255, 255) 20px -20px 0px -3px,
-    rgb(255, 85, 85) 20px -20px
+    rgb(255, 85, 85) 20px -20px;
+    a.btn{
+      height: 20px;
+      font-size: small;
+      margin: 1vw;
+    }
   }
   input.mainInput{
     width: 70vw;
   }
   /* end of homePage */
+  /* scoreboard of head hunter */
+  div.HeadHunterScoresDiv{
+    table{
+      margin-bottom: 20px;
+    }
+    
+  }
+  h1.headHunterScore{
+    font-size: large;
+  }
+  /* end of scoreboard of head hunter */
   /* sudoku */
  input.sudokuInput{
   height: 7vw;
@@ -296,6 +312,10 @@ table {
 }
 /* end of sliding puzzle */
 /* Head Hunter  */
+.headHunterScore{
+  color:red;
+  
+}
 .headHunterTitle{
   border: 1px black solid;
   padding: 15px;

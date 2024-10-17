@@ -16,6 +16,10 @@
             margin-left: 5vw;
         }
     }
+    footer{
+        bottom: -7vh;
+        font-size: 10px;
+    }
 }
 .loginContainer{
     border: 1px black solid;

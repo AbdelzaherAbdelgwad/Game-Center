@@ -48,14 +48,16 @@ export default function HeadHunterScoreBoard() {
               <th>Name</th>
               <th>Hits</th>
               <th>Accuracy</th>
+              <th>Score</th>
             </tr>
           </thead>
           <tbody>
             {allPlayers.map((player,index)=>{
             return  <tr key={index}>
-                        <td>{player.name}</td>
+                        <td style={{backgroundColor:'green'}}>{player.name}</td>
                         <td>{player.score}</td>
                         <td>{player.accuracy}%</td>
+                        <td>{player.score*player.accuracy}</td>
                     </tr>})}
           </tbody>
           
