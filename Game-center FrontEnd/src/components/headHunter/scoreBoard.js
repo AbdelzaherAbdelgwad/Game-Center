@@ -38,7 +38,8 @@ export default function HeadHunterScoreBoard() {
 
   return (
     <div className='HeadHunterScoresDiv'>
-        <h1 className='HomePageTitle'>Scoreboard</h1>         
+        <h1 className='HomePageTitle'>SCORE BOARD</h1>
+        <em>~ Note:  This show your best attempt of all time ~</em>        
         {allPlayers[0] 
             && 
         <table> 

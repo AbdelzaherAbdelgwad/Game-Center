@@ -17,19 +17,20 @@ export default function HeadHunter() {
             boxShadow: 'rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset',
             transform:'translate(' +Math.round(Math.random()*88)+ 'vw,' + Math.round(Math.random()*60)+ 'vh)'
     })
-    const [correctCounter,setCorrectCounter] = useState(0)
+    const [correctHits,setCorrectHits] = useState(0)
     const [clickCounter,setClickCounter] = useState(0)
     const [accuracy,setAccuracy] = useState(0)
     const [startTime,setStartTime] = useState(false)
-    const [Time,setTime] = useState(60)
+    const [Time,setTime] = useState(3)
     const [currentPlayer,setCurrentPlayer] = useState(localStorage.getItem("headHunterPlayer"))
     // const [playersData,setPlayersData] = useState([])
     const [render,setRender] = useState(false)
+    const [oldData,setOldData] = useState(3)
     const updateDataBase = async () => {
         try {
             await axios.post('http://localhost:9191/playerInfo/updatePlayer', {
-                name: localStorage.getItem("headHunterPlayer"),
-                score: correctCounter,
+                name: currentPlayer,
+                score: correctHits,
                 accuracy: accuracy
             });
             console.log("posted");
@@ -38,23 +39,47 @@ export default function HeadHunter() {
             console.error("Error posting data:", error);
         }
         
-    };  
-        
-    useEffect(()=>{
-        startTime && Time && setTimeout(()=>{
-            setTime(prev=>prev-1)
-        },1000)
-        if(Time===0){
-            updateDataBase()
-            
+    };
+    const compareDB = async () => {
+        try {
+          const response = await axios.get(`http://localhost:9191/playerInfo/getPlayerByName + `+ currentPlayer);
+          console.log("Data retrieved:", response.data);
+          return response.data; 
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          return null; 
         }
-    },[Time,startTime])
-    
+      };
+      
+      useEffect(() => {
+        const updateScores = async () => {
+          if (startTime && Time) {
+            setTimeout(() => {
+              setTime((prev) => prev - 1);
+            }, 1000);
+          }
+      
+          if (Time === 0) {
+            const oldData = await compareDB(); 
+            const oldScoreRatio = oldData.score * (oldData.accuracy / 100); 
+            const newScoreRatio = correctHits * (accuracy / 100);
+            console.log(oldScoreRatio,newScoreRatio)
+            if(newScoreRatio>oldScoreRatio){
+                updateDataBase();
+            }else{
+                setRender(true)
+            }
+          }
+        };
+      
+        updateScores();
+      }, [Time, startTime]);
+      
 
     
     function handleBallClick(){
         setStartTime(true)
-        setCorrectCounter(prev=>prev+1)
+        setCorrectHits(prev=>prev+1)
         let randomY = Math.round(Math.random()*60)
         let randomX = Math.round(Math.random()*88)
         //setStyling(handleBallStyling(randomY,randomX,1))
@@ -69,12 +94,12 @@ export default function HeadHunter() {
     }
     useEffect(()=>{
         setAccuracy(prev=>{
-            if(correctCounter){
-                prev = (correctCounter/clickCounter)*100
+            if(correctHits){
+                prev = (correctHits/clickCounter)*100
             }
             return prev
         })
-    },[clickCounter,correctCounter])
+    },[clickCounter,correctHits])
 
   return (
     <div >
@@ -86,7 +111,7 @@ export default function HeadHunter() {
             {Time?<Link reloadDocument className=" btn " style={{margin:'30px 10px'}}>New Game</Link>:null}
         </div>
         <h3 style={{color:'red',marginTop: '0px'}}>UserName: {currentPlayer} | <p style={{display:'inline', color:'green'}}>TIMER: {Time} sec</p></h3>
-        {Time?<h3 style={{color:'red',margin: '0px'}}> Number of hits: {correctCounter} | Accuracy: {parseFloat(accuracy.toFixed(3))}%</h3>:null}
+        {Time?<h3 style={{color:'red',margin: '0px'}}> Number of hits: {correctHits} | Accuracy: {parseFloat(accuracy.toFixed(3))}%</h3>:null}
         
 
         {Time ?<div className='headHunterContainer' onClick={handleDivClick}>
@@ -97,7 +122,7 @@ export default function HeadHunter() {
         </div>
         :
         <div>
-            <h1 style={{color:'red'}}>Number of hits: {correctCounter} | Accuracy: {parseFloat(accuracy.toFixed(3))}%</h1>
+            <h1 style={{color:'red'}}>Number of hits: {correctHits} | Accuracy: {parseFloat(accuracy.toFixed(3))}%</h1>
             {/* {playersData && playersData.map((player,index)=>{
                 return <h3 key={index}>{player.name} | {player.score} | {player.accuracy}%</h3>
             })} */} {render ? <HeadHunterScoreBoard/>:null}
