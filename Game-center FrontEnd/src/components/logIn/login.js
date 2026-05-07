@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './login.css';
 import { useNavigate } from 'react-router-dom';
 import Signup from './signup';
-import axios from 'axios';
+import api from '../../api';
 
 export default function Login({ onLogin }) {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ export default function Login({ onLogin }) {
 
   const checkValidation = async ()=>{
     try {
-      const response = await axios.post('http://localhost:9191/loginAccounts/checkValidation', {
+      const response = await api.post('/loginAccounts/checkValidation', {
         username:username,
         password:password
       });

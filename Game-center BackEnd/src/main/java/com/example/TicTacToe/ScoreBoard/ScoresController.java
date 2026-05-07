@@ -7,7 +7,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Scores")
-@CrossOrigin("http://localhost:3000")
 public class ScoresController {
     @Autowired
     private ScoresService scoresServ;

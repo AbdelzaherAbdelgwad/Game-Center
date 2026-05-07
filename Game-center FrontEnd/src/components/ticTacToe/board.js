@@ -3,7 +3,7 @@ import React, { useEffect, useState} from "react";
 import {v4 as uuidv4} from "uuid";
 import Confetti from 'react-confetti';
 import { Link } from "react-router-dom";
-import axios from "axios";
+import api from '../../api';
 
 export default function Board() {
 // constants
@@ -22,14 +22,14 @@ export default function Board() {
 //  get request wins
   useEffect(()=>{
     if(player1){
-      axios.get("http://localhost:9191/Scores/getPlayer + " + player1)
+      api.get('/Scores/getPlayer + ' +player1)
       .then((res)=>{
         setPlayer1Wins(res.data.wins)
         setPlayer1Losses(res.data.losses)})   
     }
     
     if(player2){
-      axios.get("http://localhost:9191/Scores/getPlayer + " + player2)
+      api.get('/Scores/getPlayer + ' +player2)
       .then((res)=>{
         setPlayer2Wins(res.data.wins)
         setPlayer2Losses(res.data.losses)})
@@ -43,13 +43,13 @@ export default function Board() {
     try{
       if(isX){
       
-      await axios.post('http://localhost:9191/Scores/updateScore',{
+      await api.post('/Scores/updateScore',{
         "playerName": player1,
         wins: player1Wins+1,
         losses:player1Losses
       }).then(res => {setPlayer1Wins(res.data.wins)})
 
-      await axios.post('http://localhost:9191/Scores/updateScore',{
+      await api.post('/Scores/updateScore',{
         "playerName": player2,
         wins: player2Wins,
         losses:player2Losses + 1
@@ -57,13 +57,13 @@ export default function Board() {
 
       
     }else{
-      await axios.post('http://localhost:9191/Scores/updateScore',{
+      await api.post('/Scores/updateScore',{
         "playerName": player2,
         wins: player2Wins + 1,
         losses:player2Losses
       }).then(res => {setPlayer2Wins(res.data.wins)})
 
-      await axios.post('http://localhost:9191/Scores/updateScore',{
+      await api.post('/Scores/updateScore',{
           "playerName": player1,
           wins: player1Wins,
           losses:player1Losses +1

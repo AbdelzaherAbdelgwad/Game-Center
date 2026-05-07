@@ -6,7 +6,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/playerInfo")
-@CrossOrigin("http://localhost:3000")
 public class PlayerController {
     @Autowired
     private PlayerService playerServ;

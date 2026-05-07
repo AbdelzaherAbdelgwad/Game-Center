@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../../api';
 import React, {useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
 
@@ -6,11 +6,11 @@ export default function ScoreBoard() {
   const [allPlayers,setAllPlayers] = useState([])
 
   const removePlayer = (id)=>{
-    axios.delete('http://localhost:9191/Scores/deleteById + ' + id)
+    api.delete('/Scores/deleteById + ' + id)
   }
   
   useEffect(()=>{
-    axios.get("http://localhost:9191/Scores/getAllPlayers").then((res)=>{setAllPlayers(res.data)})
+    api.get('/Scores/getAllPlayers').then((res)=>{setAllPlayers(res.data)})
   }
   ,[])
 
@@ -28,7 +28,7 @@ export default function ScoreBoard() {
   }
 
   function handleDeleteAll(){
-    axios.delete("http://localhost:9191/Scores/deleteAll")
+    api.delete('/Scores/deleteAll')
     window.location.reload();
     alert("All Players are deleted")
 

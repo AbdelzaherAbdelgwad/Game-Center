@@ -6,6 +6,7 @@ Watch the demo video [here](https://drive.google.com/file/d/1yhQe-AdRY0lMEf76Exw
 ## Table of Contents
 
 - [Download the Repository](#download-the-repository)
+- [Getting Started with Docker (recommended)](#getting-started-with-docker)
 - [Getting Started with the Backend](#getting-started-with-the-backend)
 - [Getting Started with the Frontend](#getting-started-with-the-frontend)
 
@@ -16,6 +17,43 @@ To get started, download the repository as a ZIP file:
 1. Click on the green "Code" button.
 2. Select "Download ZIP".
 3. Extract the contents to your desired location.
+
+## Getting Started with Docker
+
+The easiest way to run the entire app — no Java, Node.js, or MySQL setup needed.
+
+### Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/) and Docker Compose
+
+### Steps
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone <repo-url>
+   cd Game-Center
+   ```
+
+2. **Build and start both services:**
+
+   ```bash
+   docker-compose up --build
+   ```
+
+3. **Open the app:** [http://localhost:3000](http://localhost:3000)
+
+The backend API is also accessible directly at [http://localhost:9191](http://localhost:9191).
+
+### Useful commands
+
+```bash
+docker-compose up -d --build   # start in background
+docker-compose logs -f          # follow logs
+docker-compose down             # stop and remove containers
+```
+
+---
 
 ## Getting Started with the Backend
 

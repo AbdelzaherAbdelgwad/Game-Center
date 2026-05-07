@@ -1,6 +1,6 @@
 import React, {  useState } from 'react';
 import './login.css';
-import axios from 'axios';
+import api from '../../api';
 
 export default function Signup({signData}) {
     const [username, setUsername] = useState('');
@@ -10,7 +10,7 @@ export default function Signup({signData}) {
 
     const addAccountDB = async ()=>{
         try {
-                const response = await axios.post('http://localhost:9191/loginAccounts/addAccount', {
+                const response = await api.post('/loginAccounts/addAccount', {
                 username:username,
                 email:email,
                 password:password

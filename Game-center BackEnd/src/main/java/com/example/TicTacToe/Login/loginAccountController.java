@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("/loginAccounts")
-@CrossOrigin("http://localhost:3000")
 public class loginAccountController {
     @Autowired
     private loginAccountService loginServ;

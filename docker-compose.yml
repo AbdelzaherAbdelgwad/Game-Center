@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./Game-center BackEnd
+      dockerfile: Dockerfile
+    container_name: game-center-backend
+    ports:
+      - "9191:9191"
+    environment:
+      - CORS_ORIGINS=http://localhost:3000
+    networks:
+      - game-center-network
+
+  frontend:
+    build:
+      context: ./Game-center FrontEnd
+      dockerfile: Dockerfile
+      args:
+        - REACT_APP_API_URL=/api
+    container_name: game-center-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - game-center-network
+
+networks:
+  game-center-network:
+    driver: bridge

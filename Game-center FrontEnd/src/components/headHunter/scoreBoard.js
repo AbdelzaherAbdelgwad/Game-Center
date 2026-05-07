@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../../api';
 import React, {useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
 
@@ -6,11 +6,11 @@ export default function HeadHunterScoreBoard() {
   const [allPlayers,setAllPlayers] = useState([])
 
   const removePlayer = (id)=>{
-    axios.delete('http://localhost:9191/playerInfo/deletePlayerById + ' + id)
+    api.delete('/playerInfo/deletePlayerById + ' + id)
   }
   
   useEffect(()=>{
-    axios.get("http://localhost:9191/playerInfo/getAllPlayers").then((res)=>{setAllPlayers(res.data);console.log(res.data)})
+    api.get('/playerInfo/getAllPlayers').then((res)=>{setAllPlayers(res.data);console.log(res.data)})
   }
   ,[])
 
@@ -28,7 +28,7 @@ export default function HeadHunterScoreBoard() {
   }
 
   function handleDeleteAll(){
-    axios.delete("http://localhost:9191/playerInfo/deleteAllPlayers")
+    api.delete('/playerInfo/deleteAllPlayers')
     alert("All Players are deleted")
     setAllPlayers([])
     return <h1>NO Players found</h1>

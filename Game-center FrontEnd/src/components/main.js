@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import api from '../api';
 export default function Main() {
   const userName = localStorage.getItem("Username")
   const [ticClicked,setTicClicked] = useState(false)
@@ -14,11 +14,11 @@ export default function Main() {
   const [headHunterPlayers,setHeadHunterPlayers] = useState([])
   
   useEffect(()=>{
-    axios.get("http://localhost:9191/Scores/getAllPlayers")
+    api.get('/Scores/getAllPlayers')
     .then((res)=>{
       setPlayersNames(res.data.map(player=>player.playerName));
     })
-    axios.get('http://localhost:9191/playerInfo/getAllPlayers')
+    api.get('/playerInfo/getAllPlayers')
     .then((res)=>{setHeadHunterPlayers(res.data.map(player=>player.name))})
     localStorage.setItem("auth",false)
     localStorage.setItem("authTicTacToe",false)
@@ -26,7 +26,7 @@ export default function Main() {
   },[])
   // TicTacToe Game
   const addPlayer1Tictactoe =()=>{
-    axios.post('http://localhost:9191/Scores/savePlayer', 
+    api.post('/Scores/savePlayer', 
       {
       'playerName': player1Tictactoe.playerName,
       wins: 0,
@@ -35,7 +35,7 @@ export default function Main() {
   }
 
   const addPlayer2Tictactoe =()=>{
-    axios.post('http://localhost:9191/Scores/savePlayer', 
+    api.post('/Scores/savePlayer', 
       {
       'playerName': player2Tictactoe.playerName,
       wins: 0,
@@ -93,7 +93,7 @@ export default function Main() {
       setTicClicked(false)
     }
     function addHeadHunterPlayer(){
-      axios.post('http://localhost:9191/playerInfo/addPlayer', 
+      api.post('/playerInfo/addPlayer', 
         {
         name: headHunterPlayer.name,
         score: 0,

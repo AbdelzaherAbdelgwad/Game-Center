@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import Ball from './ball'
 import { Link } from "react-router-dom";
 import { useState } from 'react'
-import axios from 'axios';
+import api from '../../api';
 import HeadHunterScoreBoard from './scoreBoard';
 export default function HeadHunter() {   
     const [styling,setStyling] = useState({
@@ -28,7 +28,7 @@ export default function HeadHunter() {
     const [oldData,setOldData] = useState()
     const updateDataBase = async () => {
         try {
-            await axios.post('http://localhost:9191/playerInfo/updatePlayer', {
+            await api.post('/playerInfo/updatePlayer', {
                 name: currentPlayer,
                 score: correctHits,
                 accuracy: accuracy
@@ -42,7 +42,7 @@ export default function HeadHunter() {
     };
     const compareDB = async () => {
         try {
-          const response = await axios.get(`http://localhost:9191/playerInfo/getPlayerByName + `+ currentPlayer);
+          const response = await api.get(`/playerInfo/getPlayerByName + `+ currentPlayer);
           console.log("Data retrieved:", response.data);
           return response.data; 
         } catch (error) {
